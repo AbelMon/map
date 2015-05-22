@@ -1,25 +1,18 @@
 <!DOCTYPE html>
 <html ng-app="mapApp">
     <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Map App</title>
         <link rel="icon" href="images/icon.png">
         <link rel="stylesheet" href="css/libs/bootstrap.css">
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/libs/fonts.css">
-
-        <script src="js/shared/jquery-2.1.1.js"></script>
-
-        <script src="js/shared/bootstrap.js"></script>
-        <!--Angular-->
-        <script src="js/shared/angular.js"></script>
-
-        <!--Google map Api-->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKO8Yc9-ZjY7u-cQVD3o9gkB21X5SDf-M"></script>
-
-        <script src="js/shared/ng-map.min.js"></script>
     </head>
     <body ng-controller="mainController">
+
+
         <map center="{{latitude}}, {{longitude}}" zoom="{{zoom}}" on-click="placeMarker()">
             <marker position = "{{places[0].position.A}}, {{places[0].position.F}}" id="{{places[0].id}}" on-click="showInfo('Iglesia Antigua')" animation="DROP" title="Iglesia Antigua"></marker>
 
@@ -30,6 +23,8 @@
             <marker position = "{{places[3].position.A}}, {{places[3].position.F}}" id="{{places[3].id}}" on-click="showInfo('Estadio San Miguel')" animation="DROP" title="Estadio San Miguel"></marker>
 
         </map>
+
+        <!--modal-->
         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -52,14 +47,16 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> <!--end of modal-->
 
 
         <div class="searcher">
             <input type="text" id="autocomplete" ng-model="searchPlace" ng-focus="showList()" ng-keyup="showItem(searchPlace)">
+
             <button type="button" class="btn btn-primary" ng-click="goTo()">
                 <span class="icon-search search_icon"></span>
             </button>
+
             <div class="listPlaces">
                 <ul ng-show = "show">
                     <li ng-click="addValue('Iglesia Antigua')" ng-show="showFirstItem">
@@ -76,23 +73,33 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> <!--End of .searcher-->
 
         <div class="markerIconDiv iconContainer" ng-click="showSearchBar()">
             <span class="icon-search icon toSearch" title="Search your markers"></span>
             <p class="placesInterest"></p>
         </div>
 
-        <!--<div class="favPlacesContainer iconContainer">
-            <span class="icon-star icon"></span>
-            <p class="placesInterest"></p>
-        </div>
 
-        <!Modules-->
+        <!--jquery-->
+        <script src="js/shared/jquery-2.1.1.js"></script>
 
+        <!--bootstrap-->
+        <script src="js/shared/bootstrap.js"></script>
 
+        <!--angular-->
+        <script src="js/shared/angular.js"></script>
+
+        <!--google maps api-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKO8Yc9-ZjY7u-cQVD3o9gkB21X5SDf-M"></script>
+
+        <!--google maps angular-->
+        <script src="js/shared/ng-map.min.js"></script>
+
+        <!--module-->
         <script src="js/app.js"></script>
 
+        <!--controller-->
         <script src="js/controllers/mainController.js"></script>
     </body>
 </html>
