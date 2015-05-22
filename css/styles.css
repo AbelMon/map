@@ -1,0 +1,108 @@
+html, body, .mapContainer, map {
+    height: 100%;
+}
+
+ul {
+    background-color: white;
+    border-radius: 4px;
+    list-style: none;
+    padding: 0;
+    width: 70%;
+}
+
+.cosa {
+    width: 70%;
+}
+
+li {
+    cursor: pointer;
+}
+
+li:hover {
+    background-color: #CBCBCB;
+}
+
+
+.imgDescription {
+    height: 150px;
+    margin: auto;
+}
+
+.btn {
+    height: 38px;
+    text-align: center;
+}
+
+input {
+    height: 38px;
+    width: 70%;
+}
+
+.searcher {
+    left: 10%;
+    top: 2%;
+    display: inline-block;
+    position: fixed;
+    width: 50%;
+    display: none;
+}
+
+.search_icon {
+    font-size: 125%;
+}
+
+.iconContainer {
+    text-align: center;
+    display: inline-block;
+    position: fixed;
+}
+
+.markerIconDiv {
+    top: 50px;
+    right: 6px;
+}
+
+.favPlacesContainer {
+    top: 150px;
+    right: 6px;
+}
+
+.icon {
+    border: 3px solid;
+    padding: 5px;
+    border-radius: 100%;
+    font-size: 180%;
+    cursor: pointer;
+    color: white;
+}
+
+.toSearch{
+    background-color: #3DB05C;
+}
+
+.icon-star {
+    background-color: #C6C440;
+}
+
+.toSearch:hover {
+    background-color: white;
+    color: #3DB05C;
+}
+
+.icon-star:hover {
+    background-color: white;
+    color: #C6C440;
+}
+
+.placesInterest {
+    margin: 10px;
+    font-weight: bolder;
+    text-shadow: 2px -2px 1px white, 2px 2px 1px white, -2px 2px 1px white, -2px 1px white;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+
