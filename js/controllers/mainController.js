@@ -1,23 +1,21 @@
 app.controller('mainController', function($scope, $window) {
     var map;
-    $scope.show = false;
-    $scope.showFirstItem = true;
+
+    $scope.show = false; //hides the ul list using the directive ng-show.
+
+    //shows the items of list using the directive ng-show.
+    $scope.showFirstItem = true; 
     $scope.showSecodItem = true;
     $scope.showThirdItem = true;
     $scope.showFourthItem = true;
 
     $scope.latitude = 14.546460505379892;
-    var latitude = $scope.latitude;
 
     $scope.longitude = -90.41483581066132;
-    var longitude = $scope.longitude;
 
     $scope.zoom = 15;
 
-    /*var addValue = function(value) {
-        $("#autocomplete").val(value);
-    };*/
-
+    /*This list stores information of the markers*/
     var favPlaces = [
             {
                 name: "Iglesia Antigua",
@@ -51,36 +49,25 @@ app.controller('mainController', function($scope, $window) {
 
 
     $scope.places = favPlaces;
-    $scope.canAddMarkers = false;
 
+    /*'Latlong' objects. They will be used to center the map to perform a search.*/
     $scope.coordsAntigua = new google.maps.LatLng(favPlaces[0].position.A, favPlaces[0].position.F);
     $scope.coordsMercado = new google.maps.LatLng(favPlaces[1].position.A, favPlaces[1].position.F);
     $scope.coordsTorre = new google.maps.LatLng(favPlaces[2].position.A, favPlaces[2].position.F);
     $scope.coordsEstadio = new google.maps.LatLng(favPlaces[3].position.A, favPlaces[3].position.F);
 
-    console.log($scope.coordsAntigua);
-
-    /*$scope.$on('mapInitialized', function(evt, evtMap) {
-        map = evtMap;
-        console.log({map: map.center.A});
-        $scope.placeMarker = function(e) {
-            console.log(e);
-            console.log(e.latLng);
-            console.log(favPlaces[0].position);
-            console.log(e);
-        };
-    });*/
-
-
+    //This function shows and hides the search bar.
     $scope.showSearchBar = function() {
         $(".searcher").fadeToggle( "slow", "linear" );
     };
 
+    //This function adds the value of the list, the input.
     $scope.addValue = function(value) {
         $("#autocomplete").val(value);
         $scope.NoShowList();
     }
 
+    //This function adds the information to the modal
     $scope.showInfo = function(empty, title) {
         $scope.place = title;
         if (title === "Iglesia Antigua") {
@@ -102,9 +89,11 @@ app.controller('mainController', function($scope, $window) {
         $('.modal').modal('show');
     };
 
+
+    /*This function displays the items in the list, only if the string matches.*/
     $scope.showItem = function(place) {
-        console.log(place);
         place = place.toLowerCase();
+
         if ("iglesia antigua".indexOf(place) != -1) {
             $scope.showFirstItem = true;
         } else {
@@ -130,25 +119,22 @@ app.controller('mainController', function($scope, $window) {
         };
     };
 
+    //shows the ul element
     $scope.showList = function() {
         $scope.show = true;
     };
 
+    //hides the ul element
     $scope.NoShowList = function() {
         $scope.show = false;
     };
 
-    $scope.IsEmpty = function(value) {
-        if (value.length > 0) {
-            $scope.NoShowList();
-        } else {
-            $scope.showList();
-        };
-    };
-
+    /*This function sends the user to the requesting marker*/
     $scope.goTo = function() {
         var placeToGo = $("#autocomplete").val();
+
         placeToGo = placeToGo.toLowerCase();
+
         if (placeToGo === "iglesia antigua") {
             $scope.map.setZoom(18);
             $scope.map.setCenter($scope.coordsAntigua);
